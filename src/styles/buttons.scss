@@ -1,0 +1,46 @@
+.Button {
+  appearance: none;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: none;
+  color: var(--primary-colour);
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Button.Pill {
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+}
+
+.Button.Small {
+  font-size: 0.8rem;
+}
+
+.Button.Large {
+  font-size: 1.2rem;
+}
+
+.Button.Primary {
+  color: #fff;
+  background: var(--primary-colour);
+}
+
+.Button.Light {
+  background: rgba(var(--primary-colour-rgb), 0.1);
+}
+
+.Button.ShowHelp {
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  color: rgba(var(--primary-colour-rgb), 0.5);
+  background: rgba(var(--primary-colour-rgb), 0.1);
+  border-radius: 10px;
+}

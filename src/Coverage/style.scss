@@ -1,0 +1,11 @@
+.Coverage {
+  border: 1px solid rgba(var(--primary-colour-rgb), 0.5);
+  border-radius: 8px;
+  .Customize {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  &.Buying {
+    opacity: 0;
+  }
+}

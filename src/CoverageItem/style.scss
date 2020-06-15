@@ -1,0 +1,116 @@
+.CoverageItem {
+  font-size: 0.8rem;
+  padding: 0.5rem 0.5rem;
+  border-top: 1px solid rgba(var(--primary-colour-rgb), 0.5);
+  .Row {
+    .Button,
+    h4,
+    .ValueElem {
+      display: inline-block;
+    }
+    h4 {
+      color: var(--primary-colour);
+    }
+    &.Flex {
+      display: flex;
+      align-items: center;
+      .ValueElem {
+        margin-left: auto;
+        color: var(--secondary-colour);
+        font-weight: 600;
+      }
+      i {
+        font-weight: 400;
+      }
+      .Button {
+        margin-right: 6px;
+      }
+    }
+    .CustomizeBtns {
+      text-align: right;
+    }
+  }
+}
+
+.CoverageItem {
+  &.Increased {
+    h4 {
+      animation-name: didIncrease;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+  &.Decreased {
+    h4 {
+      animation-name: didDecrease;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes didIncrease {
+  0%   { color: var(--success) }
+  100% { color: var(--primary-colour) }
+}
+
+@keyframes didDecrease {
+  0%   { color: var(--warning) }
+  100% { color: var(--primary-colour) }
+}
+
+.HelpCopy {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  small {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: #999;
+    padding: 0.5rem;
+  }
+  &.Active {
+    max-height: 200px;
+    transition: max-height 1s ease-out;
+  }
+}
+
+
+.CustomizeHolder {
+  position: relative;
+  margin-left: 6px;
+  .Button {
+    border: 1px solid var(--success);
+    background: var(--success-light);
+    width: 40px;
+    height: 30px;
+    margin: 0 !important;
+    &.Decrease {
+      border-right: 0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &.Increase {
+      border-left: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &.Disabled {
+      border-color: #999;
+      color: #999;
+      background: #fff;
+    }
+  }
+  .Divider {
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    height: 20px;
+    width: 0;
+    border-left: 1px solid rgba(var(--primary-colour-rgb), 0.5);
+    vertical-align: middle;
+  }
+}

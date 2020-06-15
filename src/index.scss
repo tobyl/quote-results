@@ -1,0 +1,55 @@
+@import 'styles/utils.scss';
+@import 'styles/buttons.scss';
+@import 'styles/forms.scss';
+
+:root {
+  --primary-colour: rgb(0, 83, 160);
+  --primary-colour-rgb: 0, 83, 160;
+  --primary-colour-light: rgb(231, 241, 250);
+  --secondary-colour: rgb(229, 23, 50);
+  --secondary-colour-rgb: 229, 23, 50;
+  --success: #2ec36a;
+  --success-light: #f1fff6;
+  --warning: #FF5719;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+  padding-bottom: 3rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--primary-colour);
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 960px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1152px) {
+  .container {
+    max-width: 900px;
+  }
+}

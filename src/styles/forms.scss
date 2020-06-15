@@ -1,0 +1,32 @@
+input[type='text'],
+select {
+  appearance: none;
+  border: 1px solid #ccc;
+  width: 100%;
+  line-height: inherit;
+  color: inherit;
+  font-size: inherit;
+  padding: 6px 10px;
+  border-radius: 3px;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(var(--primary-colour-rgb), 0.8);
+
+}
+
+.field {
+  margin-bottom: 1rem;
+  &.half {
+    width: 48%;
+    float: left;
+    &:first-child {
+      margin-right: 4%;
+    }
+  }
+}
+
+::placeholder { color: #ccc }

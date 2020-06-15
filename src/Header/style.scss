@@ -1,0 +1,46 @@
+.Header {
+  padding-top: 1rem;
+  img {
+    max-height: 65px;
+    margin-bottom: 10px;
+    &.inova {
+      float: left;
+    }
+    &.costco {
+      float: right;
+    }
+  }
+}
+
+.Nav {
+  background: #0053A0;
+  margin: 1rem 0 1.5rem 0;
+  border-radius: 6px;
+  a {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    &.active {
+      background: #E51732;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .Header {
+    img {
+      max-height: 80px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Header {
+    img {
+      max-height: 100px;
+    }
+  }
+}
