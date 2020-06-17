@@ -3,8 +3,6 @@
     text-align: center;
     margin-top: -65px;
     .Button {
-      position: relative;
-      top: 10px;
       border: 1px solid var(--primary-colour);
       width: 80px;
       height: 80px;
@@ -19,8 +17,6 @@
     }
     .Button.Recommended {
       position: relative;
-      top: 0;
-      z-index: 10;
       width: 130px;
       height: 130px;
       font-size: 14px;
@@ -30,6 +26,7 @@
     .Button.Active {
       font-weight: bold;
       color: var(--primary-colour);
+      box-shadow: 0 0 0 1px rgba(var(--primary-colour-rgb), 0.5);
     }
   }
 }

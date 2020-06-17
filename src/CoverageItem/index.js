@@ -8,7 +8,7 @@ import { AppContext } from 'context'
 
 import './style.scss'
 
-export const Item = ({ name, value, children, valueElem }) => {
+export const Item = ({ name, value, children, valueElem, isWaiver }) => {
 
   const ref = useRef()
 
@@ -20,10 +20,8 @@ export const Item = ({ name, value, children, valueElem }) => {
   useEffect(() => {
     if (ref.current !== value) {
       if (Number(value) < Number(ref.current)) {
-        console.log(name, 'went down')
         setDir('down')
       } else {
-        console.log(name, 'went up')
         setDir('up')
       }
     }
@@ -33,6 +31,7 @@ export const Item = ({ name, value, children, valueElem }) => {
   const cls = classNames('CoverageItem', {
     'Increased': dir === 'up',
     'Decreased': dir === 'down',
+    'IsWaiver': isWaiver,
   })
 
   return (
@@ -47,7 +46,7 @@ export const Item = ({ name, value, children, valueElem }) => {
             {valueElem}
           </div>
         )}
-        {isCustomized && (
+        {!isWaiver && isCustomized && (
           <CustomizeItem
             name={name}
             value={value}
@@ -56,6 +55,11 @@ export const Item = ({ name, value, children, valueElem }) => {
           />
         )}
       </div>
+      {isWaiver && (
+        <div className="Row">
+          {children}
+        </div>
+      )}
       <div className={helpVisible ? 'Row HelpCopy Active' : 'Row HelpCopy'}>
         <small>{copy[name].help}</small>
       </div>
@@ -63,12 +67,18 @@ export const Item = ({ name, value, children, valueElem }) => {
   )
 }
 
-export const DepreciationItem = ({ value }) => {
+export const DepreciationItem = ({ currentPackage }) => {
 
   const { vehicles } = useContext(AppContext)
 
+  let value = false
+
+  if (currentPackage === 'recommended' || currentPackage === 'highest') {
+    value = true
+  }
+
   return (
-    <Item name="waiver_depreciation">
+    <Item name="waiver_depreciation" isWaiver value={value}>
       <div>
         {Object.keys(vehicles).map(v =>
           <div key={v}>
@@ -78,17 +88,27 @@ export const DepreciationItem = ({ value }) => {
             {vehicles[v].model}
           </div>
         )}
+        <CustomizeItem
+          name="waiver_depreciation"
+          value={value}
+        />
       </div>
     </Item>
   )
 }
 
-export const AccidentItem = ({ name, value }) => {
+export const AccidentItem = ({ currentPackage }) => {
 
   const { vehicles } = useContext(AppContext)
 
+  let value = false
+
+  if (currentPackage === 'recommended' || currentPackage === 'highest') {
+    value = true
+  }
+
   return (
-    <Item name="accident_waiver">
+    <Item name="accident_waiver" isWaiver value={value}>
       <div>
         {Object.keys(vehicles).map(v =>
           <div key={v}>
@@ -107,8 +127,17 @@ export const CoverageItem = ({ name, value }) => {
 
   const { updateCoverage, isCustomized } = useContext(AppContext)
 
+  const elem = () => {
+    if (value === 'No coverage') {
+      return (
+        <span>No Coverage</span>
+      )
+    }
+    return <span><i>$</i>{numeral(value).format('0,0')}</span>
+  }
+
   return (
-    <Item name={name} value={value} valueElem={typeof value === 'boolean' ? value : <span><i>$</i>{numeral(value).format('0,0')}</span>}>
+    <Item name={name} value={value} valueElem={elem()}>
       {isCustomized && (
         <CustomizeItem
           name={name}

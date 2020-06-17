@@ -20,7 +20,6 @@ const CoveragePicker = ({ currentPackage, changePackage }) => {
       <button className={'Button Recommended' + cls('recommended')} onClick={() => changePackage('recommended')}>
         Costco
         <span>Recommended!</span>
-        Package
       </button>
       <button className={'Button Highest' + cls('highest')} onClick={() => changePackage('highest')}>
         Highest

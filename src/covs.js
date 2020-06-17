@@ -4,8 +4,8 @@ const good = {
   coverage_collision: '1000',
   transportation_replacement: '1200',
   damage_non_owned: '50000',
-  // waiver_depreciation: false,
-  // accident_waiver: false,
+  waiver_depreciation: false,
+  accident_waiver: false,
 }
 
 const recommended = {
@@ -14,8 +14,8 @@ const recommended = {
   coverage_collision: '1000',
   transportation_replacement: '1200',
   damage_non_owned: '50000',
-  // waiver_depreciation: true,
-  // accident_waiver: true,
+  waiver_depreciation: true,
+  accident_waiver: true,
 }
 
 const highest = {
@@ -24,8 +24,8 @@ const highest = {
   coverage_collision: '500',
   transportation_replacement: '1200',
   damage_non_owned: '50000',
-  // waiver_depreciation: true,
-  // accident_waiver: true,
+  waiver_depreciation: true,
+  accident_waiver: true,
 }
 
 export default {

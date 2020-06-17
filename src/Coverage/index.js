@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { CoverageItem, DepreciationItem, AccidentItem } from 'CoverageItem'
+// import { CoverageItem, DepreciationItem, AccidentItem } from 'CoverageItem'
+import SingleItem from 'SingleItem'
 import CoveragePicker from 'CoveragePicker'
 import { AppContext } from 'context'
 
@@ -29,14 +30,14 @@ const Coverage = ({ buying }) => {
         </button>
       </div>
       {Object.keys(coverages[currentPackage]).map(cov =>
-        <CoverageItem
+        <SingleItem
           key={cov}
           name={cov}
-          value={coverages[currentPackage][cov]}
+          currentPackage={currentPackage}
+          coverages={coverages}
+          isCustomized={isCustomized}
         />
       )}
-      <DepreciationItem />
-      <AccidentItem />
     </div>
   )
 }

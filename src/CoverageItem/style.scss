@@ -1,6 +1,12 @@
+.SingleItem {
+  .Row {
+    border-top: 1px solid red;
+  }
+}
+
 .CoverageItem {
   font-size: 0.8rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   border-top: 1px solid rgba(var(--primary-colour-rgb), 0.5);
   .Row {
     .Button,
@@ -113,4 +119,8 @@
     border-left: 1px solid rgba(var(--primary-colour-rgb), 0.5);
     vertical-align: middle;
   }
+}
+
+.IsWaiver .CustomizeHolder {
+  margin-left: auto;
 }

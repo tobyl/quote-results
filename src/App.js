@@ -67,6 +67,13 @@ const App = () => {
     localStorage.removeItem('coverages')
     setCustomize(false)
     setIsCustomized(false)
+    if (currentPackage === 'good') {
+      updateCoverage('waiver_depreciation', false)
+      updateCoverage('accident_waiver', false)
+    } else {
+      updateCoverage('waiver_depreciation', true)
+      updateCoverage('accident_waiver', true)
+    }
   }
 
   const state = {
