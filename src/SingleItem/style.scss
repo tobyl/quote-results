@@ -125,3 +125,32 @@
     max-height: 300px;
   }
 }
+
+.SingleItem {
+  &.Increased {
+    h4 {
+      animation-name: didIncrease;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+  &.Decreased {
+    h4 {
+      animation-name: didDecrease;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes didIncrease {
+  0%   { color: var(--success) }
+  100% { color: var(--primary-colour) }
+}
+
+@keyframes didDecrease {
+  0%   { color: var(--warning) }
+  100% { color: var(--primary-colour) }
+}
