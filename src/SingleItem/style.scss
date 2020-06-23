@@ -13,12 +13,13 @@
           display: inline-block;
           vertical-align: middle;
           margin: 0;
+          font-weight: 400;
         }
       }
       .Right {
         float: right;
         strong {
-          color: var(--secondary-colour);
+          color: var(--primary-colour);
         }
       }
     }
@@ -52,8 +53,8 @@
   transition: opacity 291ms ease-out, margin-right 123ms ease-out;
   margin-left: 8px;
   .Button {
-    border: 1px solid var(--success);
-    background-color: var(--success-light);
+    border: 1px solid rgba(var(--primary-colour-rgb), 0.25);
+    background-color: rgba(var(--primary-colour-rgb), 0.05);
     width: 26px;
     height: 26px;
     &.Increase {
@@ -82,6 +83,7 @@
   max-height: 0;
   overflow: hidden;
   transition: 257ms ease-out;
+  margin-left: 32px;
   &.Visible {
     max-height: 250px;
   }
@@ -119,6 +121,9 @@
         margin-top: 12px;
         margin-right: 5px;
       }
+      &.Negative {
+        display: none;
+      }
     }
   }
   &.Visible {
@@ -130,6 +135,7 @@
   &.Increased {
     h4 {
       animation-name: didIncrease;
+      animation-delay: 250ms;
       animation-duration: 3s;
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
@@ -138,6 +144,7 @@
   &.Decreased {
     h4 {
       animation-name: didDecrease;
+      animation-delay: 250ms;
       animation-duration: 3s;
       animation-iteration-count: 1;
       animation-fill-mode: forwards;

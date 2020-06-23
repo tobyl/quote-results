@@ -9,6 +9,7 @@
   color: var(--primary-colour);
   text-transform: uppercase;
   letter-spacing: 0.1px;
+  text-decoration: none;
   &:hover {
     cursor: pointer;
   }
@@ -34,6 +35,16 @@
 
 .Button.Light {
   background: rgba(var(--primary-colour-rgb), 0.1);
+}
+
+.Button.Success {
+  background: var(--success);
+  color: #fff;
+}
+
+.Button.Muted {
+  background: #c1c1c1;
+  color: #fff;
 }
 
 .Button.ShowHelp {

@@ -1,42 +1,26 @@
 import React from 'react'
+import Price from 'Price'
+import LoadingSpinner from 'LoadingSpinner'
 
-const Dollar = () => {
-  return (
-    <div className="Dollar">
-      $
-    </div>
-  )
-}
-
-const Value = ({ val }) => {
-  return (
-    <div className="Value">
-      {val}
-    </div>
-  )
-}
-
-const Per = ({ kind }) => {
-  return (
-    <div className="Per">
-      PER<br />
-      {kind}
-    </div>
-  )
-}
-
-const BuyNow = ({ buying, setBuying }) => {
+const BuyNow = ({ buying, setBuying, priceLoading }) => {
 
   return (
     <div className="BuyNow">
-      <div className="Price">
-        <div className="Monthly">
-          <Dollar /><Value val="241" /><Per kind="MONTH" />
+      {priceLoading ? (
+        <div className="BuyNowPrice Loading">
+          <LoadingSpinner />
+          <p>Fetching updated price</p>
         </div>
-        <div className="Yearly">
-          <Dollar /><Value val="2862" /><Per kind="YEAR" />
+      ) : (
+        <div className="BuyNowPrice">
+          <div className="Monthly">
+            <Price />
+          </div>
+          <div className="Yearly">
+            <Price kind="YEAR" />
+          </div>
         </div>
-      </div>
+      )}
       <button className={buying ? 'Button BuyBtn Active' : 'Button BuyBtn'} onClick={() => setBuying(true)}>
         <span>Buy</span>
         <strong>Now</strong>

@@ -6,16 +6,45 @@
   position: relative;
   text-align: center;
   margin-bottom: 50px;
-  .Price {
+  .BuyNowPrice {
     display: inline-block;
     width: 210px;
     height: 210px;
-    background: rgba(var(--primary-colour-rgb), 0.9);
+    background: #1D64A9;
     border: 6px solid var(--primary-colour);
     border-radius: 105px;
     color: #fff;
     text-align: center;
     padding: 10px;
+    .Monthly {
+      padding-top: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      .Value {
+        color: rgba(255,255,255,0.9);
+        font-size: 50px;
+      }
+      .Dollar {
+        font-size: 15px;
+      }
+    }
+    .Yearly {
+      .Value {
+        color: rgba(255,255,255,0.8);
+        font-size: 37.5px;
+      }
+      .Dollar {
+        font-size: 14px;
+      }
+    }
+  }
+  .LoadingSpinner {
+    .loader {
+      margin-top: 1rem;
+      &:before,
+      &:after {
+        background: #1D64A9;
+      }
+    }
   }
 }
 
@@ -46,6 +75,11 @@
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
+  &.Active {
+    animation: none;
+    background: #c1c1c1;
+    color: #e1e1e1;
+  }
 }
 
 .Congrats {
@@ -74,8 +108,35 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 200ms ease-out;
+  .Or {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: rgba(var(--primary-colour-rgb), 0.5);
+  }
+  .Continue {
+    background: var(--success);
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 125px;
+    vertical-align: middle;
+    border-radius: 4px;
+    small {
+      font-size: 0.8rem;
+      display: block;
+    }
+  }
   &.Buying {
     max-height: 200px;
+  }
+  p {
+    padding-top: 2rem;
+    .Button.Muted {
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+    }
   }
 }
 
@@ -89,39 +150,9 @@
   100% { box-shadow: 0 0 0 12px rgba(46,195,106, 0.3) }
 }
 
-.Dollar,
-.Value,
-.Per {
-  display: inline-block;
-}
-
-.Dollar {
-  font-size: 18px;
-  vertical-align: 65%;
-}
-
-.Value {
-  font-size: 37.5px;
-  font-weight: bold;
-}
-
-.Monthly {
-  padding-top: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.5);
-  .Value {
-    font-size: 50px;
-    color: rgba(255,255,255,0.9);
+.HomeFooter {
+  position: relative;
+  .BuyBtn {
+    position: static;
   }
-}
-
-.Yearly {
-  .Value {
-    color: rgba(255,255,255,0.8);
-  }
-}
-
-.Per {
-  text-align: left;
-  font-size: 12px;
-  margin-left: 6px;
 }

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import SimplePrice from 'SimplePrice'
 import BuyNow from './BuyNow'
 import Coverage from 'Coverage'
 import { AppContext } from 'context'
@@ -8,7 +9,7 @@ import './style.scss'
 
 const Home = () => {
 
-  const { buying, setBuying } = useContext(AppContext)
+  const { buying, setBuying, priceLoading } = useContext(AppContext)
 
   return (
     <div className="Home">
@@ -17,14 +18,28 @@ const Home = () => {
           <h1>Congratulations!</h1>
           <p>Here's your Costco Recommended <br />insurance package</p>
         </div>
-        <BuyNow buying={buying} setBuying={setBuying} />
+        <BuyNow
+          buying={buying}
+          setBuying={setBuying}
+          priceLoading={priceLoading}
+        />
         <div className={buying ? 'Proceed Buying text-center' : 'Proceed text-center'}>
           <h3>You can:</h3>
-          <Link className="Button Continue" to="/proceed-online">Proceed Online</Link>
-          <span>or</span>
-          <Link className="Button Continue" to="/proceed-offline">Have us Call You</Link>
+          <div>
+            <Link className="Button Success Continue" to="/proceed-online">
+              <small>Proceed</small>
+              Online
+            </Link>
+            <span className="Or">or</span>
+            <Link className="Button Success Continue" to="/proceed-offline">
+              <small>Have us</small>
+              Call You
+            </Link>
+          </div>
           <p>
-            <button onClick={() => setBuying(false)}>Go Back and Modify Coverage</button>
+            <button className="Button Small Muted" onClick={() => setBuying(false)}>
+              Go Back and Modify Coverage
+            </button>
           </p>
         </div>
         <div className={buying ? 'Saved Buying text-center' : 'Saved text-center'}>
@@ -32,6 +47,15 @@ const Home = () => {
         </div>
       </div>
       <Coverage buying={buying} />
+      <div className="HomeFooter">
+        <SimplePrice />
+        <div style={{ textAlign: 'center' }}>
+          <button className={buying ? 'Button BuyBtn Active' : 'Button BuyBtn'} onClick={() => setBuying(true)}>
+            <span>Buy</span>
+            <strong>Now</strong>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,49 @@
+.RadioGroup {
+  font-size: 0.8rem;
+  label {
+    display: inline-block;
+    border: 1px solid rgba(var(--primary-colour-rgb), 0.3);
+    background-color: rgba(var(--primary-colour-rgb), 0.05);
+    text-align: center;
+    margin-right: 1%;
+    height: 75px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    vertical-align: middle;
+    border-radius: 5px;
+    span,
+    small {
+      display: block;
+    }
+    input {
+      margin-bottom: 0.5rem;
+    }
+  }
+  &.Single {
+    label {
+      width: 70%;
+    }
+  }
+  &.Double {
+    label {
+      width: 75%;
+    }
+  }
+  &.Triple {
+    label {
+      width: 37%;
+    }
+  }
+  &.Quadruple {
+    label {
+      width: 24.25%;
+    }
+  }
+  label.FirstLabel {
+    width: 20%;
+    margin-right: 5%;
+  }
+  label.LastLabel {
+    margin-right: 0;
+  }
+}

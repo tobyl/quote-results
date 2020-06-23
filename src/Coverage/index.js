@@ -8,10 +8,9 @@ import './style.scss'
 
 const Coverage = ({ buying }) => {
 
-  const { setCustomize, coverages, currentPackage, setCurrentPackage, changePackage, isCustomized, setIsCustomized, cancelCustomize } = useContext(AppContext)
+  const { coverages, currentPackage, setCurrentPackage, changePackage, isCustomized, setIsCustomized, cancelCustomize, recalculatePrice } = useContext(AppContext)
 
   const handleCustomize = () => {
-    setCustomize(true)
     setIsCustomized(true)
   }
 
@@ -37,6 +36,13 @@ const Coverage = ({ buying }) => {
           coverages={coverages}
           isCustomized={isCustomized}
         />
+      )}
+      {isCustomized && (
+        <div className="Recalculate">
+          <button className="Button Small Pill Light" onClick={recalculatePrice}>
+            Recalculate Price
+        </button>
+        </div>
       )}
     </div>
   )

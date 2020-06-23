@@ -1,0 +1,26 @@
+.Monthly,
+.Yearly {
+  font-size: 30px;
+}
+
+.Dollar,
+.Value,
+.Per {
+  display: inline-block;
+}
+
+.Dollar {
+  display: inline-block;
+  font-size: 0.5em;
+  vertical-align: super;
+}
+
+.Value {
+  font-weight: bold;
+}
+
+.Per {
+  text-align: left;
+  font-size: 12px;
+  margin-left: 6px;
+}

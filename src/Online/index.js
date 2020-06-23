@@ -1,9 +1,13 @@
 import React from 'react'
+import ProceedForm from 'ProceedForm'
 
 const Online = () => {
+
   return (
     <div>
-      online!
+      <ProceedForm
+        submitUrl="/optional-benefits"
+      />
     </div>
   )
 }

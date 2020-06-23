@@ -1,9 +1,12 @@
 import React from 'react'
+import ProceedForm from 'ProceedForm'
 
 const Offline = () => {
   return (
     <div>
-      offline!
+      <ProceedForm
+        submitUrl="/complete"
+      />
     </div>
   )
 }

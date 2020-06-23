@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import _ from 'lodash'
 import Header from 'Header'
 import Home from 'Home'
 import Online from 'Online'
@@ -28,12 +29,20 @@ const vehicles = {
 const App = () => {
 
   const [loading, setLoading] = useState(true)
-  const [customize, setCustomize] = useState(false)
+  const [priceLoading, setPriceLoading] = useState(false)
   const [isCustomized, setIsCustomized] = useState(false)
   const [coverages, setCoverages] = useState(null)
   const [currentPackage, setCurrentPackage] = useState('recommended')
   const [delta, setDelta] = useState(null)
   const [buying, setBuying] = useState(false)
+  const [monthlyPrice, setMonthlyPrice] = useState(261)
+  const [customizedPrice, setCustomizedPrice] = useState(null)
+  const [modalActive, setModalActive] = useState(false)
+
+  const setAndStoreCovs = covs => {
+    setCoverages(covs)
+    localStorage.setItem('coverages', JSON.stringify(covs))
+  }
 
   const updateCoverage = (name, value) => {
     setCoverages(prevState => {
@@ -65,16 +74,41 @@ const App = () => {
 
   const cancelCustomize = () => {
     localStorage.removeItem('coverages')
-    setCustomize(false)
     setIsCustomized(false)
-    if (currentPackage === 'good') {
-      updateCoverage('waiver_depreciation', false)
-      updateCoverage('accident_waiver', false)
-    } else {
-      updateCoverage('waiver_depreciation', true)
-      updateCoverage('accident_waiver', true)
-    }
+    setCustomizedPrice(null)
+    setAndStoreCovs(covs)
   }
+
+  const recalculatePrice = () => {
+    setPriceLoading(true)
+    setTimeout(() => {
+      setCustomizedPrice(293)
+      setPriceLoading(false)
+    }, 3000)
+  }
+
+  useEffect(() => {
+    const ls = localStorage.getItem('coverages')
+    if (ls) {
+      const parsed = JSON.parse(ls)
+      setCoverages(parsed)
+      if (!_.isEqual(parsed, covs)) {
+        setIsCustomized(true)
+        setCustomizedPrice(293)
+      }
+    } else {
+      setCoverages(covs)
+      localStorage.setItem('coverages', JSON.stringify(covs))
+    }
+    setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    setPriceLoading(true)
+    setTimeout(() => {
+      setPriceLoading(false)
+    }, 3000)
+  }, [loading, setLoading, currentPackage])
 
   const state = {
     vehicles,
@@ -83,22 +117,15 @@ const App = () => {
     currentPackage, setCurrentPackage,
     changePackage,
     coverages, updateCoverage,
-    customize, setCustomize,
     isCustomized, setIsCustomized,
     cancelCustomize,
     delta, setDelta,
+    monthlyPrice, setMonthlyPrice,
+    customizedPrice, setCustomizedPrice,
+    priceLoading,
+    recalculatePrice,
+    modalActive, setModalActive,
   }
-
-  useEffect(() => {
-    const ls = localStorage.getItem('coverages')
-    if (ls) {
-      setCoverages(JSON.parse(ls))
-      setIsCustomized(true)
-    } else {
-      setCoverages(covs)
-    }
-    setLoading(false)
-  }, [])
 
   return (
     <div className="App container">

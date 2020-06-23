@@ -32,9 +32,9 @@ export const VehicleRow = ({ name, value }) => {
     <div className={value ? 'VehicleRow Visible' : 'VehicleRow'}>
       <ul>
         {Object.keys(vehicles).map(v =>
-          <li key={v}>
+          <li key={v} className={getValue(v) ? 'Positive' : 'Negative'}>
             {getValue(v) ? <i className="Yes">✔︎</i> : <i className="No">x</i>}
-            {vehicles[v].year}
+            {vehicles[v].year} {vehicles[v].make} {vehicles[v].model}
           </li>  
         )}
       </ul>
