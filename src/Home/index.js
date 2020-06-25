@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import animateScrollTo from 'animated-scroll-to'
 import SimplePrice from 'SimplePrice'
 import BuyNow from './BuyNow'
 import Coverage from 'Coverage'
@@ -10,6 +11,14 @@ import './style.scss'
 const Home = () => {
 
   const { buying, setBuying, priceLoading } = useContext(AppContext)
+
+  const footBuy = () => {
+    setBuying(true)
+    animateScrollTo(0, {
+      // minDuration: 1500,
+      speed: 1000,
+    })
+  }
 
   return (
     <div className="Home">
@@ -50,7 +59,7 @@ const Home = () => {
       <div className="HomeFooter">
         <SimplePrice />
         <div style={{ textAlign: 'center' }}>
-          <button className={buying ? 'Button BuyBtn Active' : 'Button BuyBtn'} onClick={() => setBuying(true)}>
+          <button className={buying ? 'Button BuyBtn Active' : 'Button BuyBtn'} onClick={footBuy}>
             <span>Buy</span>
             <strong>Now</strong>
           </button>

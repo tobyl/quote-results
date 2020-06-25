@@ -1,0 +1,51 @@
+.Complete {
+  p {
+    margin: 0;
+  }
+  h1 {
+    font-weight: 300;
+    margin: 0 0 1.5rem 0;
+    color: var(--primary-colour);
+  }
+  .PriceCircle {
+    margin: 0 auto 1.5rem auto;
+    width: 210px;
+    height: 210px;
+    background: #1D64A9;
+    color: #fff;
+    border: 6px solid var(--primary-colour);
+    border-radius: 105px;
+    text-align: center;
+    > div {
+      margin: 25px 15px 0 15px;
+      .Monthly {
+        padding-top: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        .Value {
+          color: rgba(255,255,255,0.9);
+          font-size: 50px;
+        }
+        .Dollar {
+          font-size: 15px;
+        }
+      }
+      .Yearly {
+        .Value {
+          color: rgba(255,255,255,0.8);
+          font-size: 37.5px;
+        }
+        .Dollar {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  p {
+    color: #666;
+    font-weight: 400;
+    line-height: 1.5;
+    a {
+      color: inherit;
+    }
+  }
+}

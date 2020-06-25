@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-// import { CoverageItem, DepreciationItem, AccidentItem } from 'CoverageItem'
 import SingleItem from 'SingleItem'
 import CoveragePicker from 'CoveragePicker'
 import { AppContext } from 'context'
@@ -8,7 +7,7 @@ import './style.scss'
 
 const Coverage = ({ buying }) => {
 
-  const { coverages, currentPackage, setCurrentPackage, changePackage, isCustomized, setIsCustomized, cancelCustomize, recalculatePrice } = useContext(AppContext)
+  const { coverages, currentPackage, setCurrentPackage, changePackage, isCustomized, setIsCustomized, cancelCustomize, recalculatePrice, anythingChanged } = useContext(AppContext)
 
   const handleCustomize = () => {
     setIsCustomized(true)
@@ -39,7 +38,10 @@ const Coverage = ({ buying }) => {
       )}
       {isCustomized && (
         <div className="Recalculate">
-          <button className="Button Small Pill Light" onClick={recalculatePrice}>
+          <button
+            className={anythingChanged ? 'Button Small Pill Light' : 'Button Small Pill Light Disabled'}
+            onClick={recalculatePrice}
+          >
             Recalculate Price
         </button>
         </div>

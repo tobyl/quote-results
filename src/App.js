@@ -6,6 +6,7 @@ import Home from 'Home'
 import Online from 'Online'
 import Offline from 'Offline'
 import OptionalBenefits from 'OptionalBenefits'
+import Complete from 'Complete'
 import { AppContext } from 'context'
 import covs from 'covs'
 
@@ -31,6 +32,7 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [priceLoading, setPriceLoading] = useState(false)
   const [isCustomized, setIsCustomized] = useState(false)
+  const [anythingChanged, setAnythingChanged] = useState(false)
   const [coverages, setCoverages] = useState(null)
   const [currentPackage, setCurrentPackage] = useState('recommended')
   const [delta, setDelta] = useState(null)
@@ -49,6 +51,7 @@ const App = () => {
       let next = Object.assign({}, prevState)
       next[currentPackage][name] = value
       localStorage.setItem('coverages', JSON.stringify(next))
+      setAnythingChanged(true)
       return next
     })
   }
@@ -83,6 +86,7 @@ const App = () => {
     setPriceLoading(true)
     setTimeout(() => {
       setCustomizedPrice(293)
+      setAnythingChanged(false)
       setPriceLoading(false)
     }, 3000)
   }
@@ -124,6 +128,7 @@ const App = () => {
     customizedPrice, setCustomizedPrice,
     priceLoading,
     recalculatePrice,
+    anythingChanged,
     modalActive, setModalActive,
   }
 
@@ -148,7 +153,7 @@ const App = () => {
             <OptionalBenefits />
           </Route>
           <Route path="/complete">
-            you've made a great choice
+            <Complete />
           </Route>
         </Switch>
       </AppContext.Provider>
